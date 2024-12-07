@@ -1,0 +1,55 @@
+-- Create the database
+CREATE DATABASE IF NOT EXISTS quiz_app;
+
+-- Use the quiz_app database
+USE quiz_app;
+
+-- Create users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(100) NOT NULL,
+    last_name VARCHAR(100) NOT NULL
+);
+
+-- Create quiz_questions table
+CREATE TABLE quiz_questions (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    question_text TEXT NOT NULL,
+    option_a VARCHAR(255) NOT NULL,
+    option_b VARCHAR(255) NOT NULL,
+    option_c VARCHAR(255) NOT NULL,
+    option_d VARCHAR(255) NOT NULL,
+    correct_option CHAR(1) NOT NULL
+);
+
+-- Create quiz_results table
+CREATE TABLE quiz_results (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    score INT NOT NULL,
+    time_taken TIME NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+INSERT INTO quiz_questions (question_text, option_a, option_b, option_c, option_d, correct_option) VALUES
+('What does CPU stand for?', 'Central Program Unit', 'Central Processing User', 'Central Processing Unit', 'Central Program User', 'C'),
+('What does HTML stand for?', 'High Text Markup Language', 'Hyper Text Markup Language', 'Hyper Tag Markup Language', 'Hypertext Markup Language', 'D'),
+('Which company developed the iPhone?', 'Apple', 'Samsung', 'Microsoft', 'Google', 'A'),
+('What does CSS stand for?', 'Cascading Simple Sheets', 'Creative Style Sheets', 'Cascading Style Sheets', 'Central Style Sheets', 'C'),
+('Which of the following is a programming language?', 'Python', 'HTML', 'CSS', 'JPEG', 'A'),
+('Which is the most popular operating system?', 'Windows', 'Mac OS', 'Android', 'Linux', 'A'),
+('What does SQL stand for?', 'Structured Question Language', 'Structured Query Language', 'Simple Query Language', 'Simple Question Language', 'B'),
+('Which of the following is not an input device?', 'Keyboard', 'Mouse', 'Scanner', 'Monitor', 'D'),
+('Who invented the World Wide Web?', 'Bill Gates', 'Steve Jobs', 'Mark Zuckerberg', 'Tim Berners-Lee', 'D'),
+('What is the full form of IP in networking?', 'Internet Program', 'Internet Page', 'Internet Protocol', 'Internal Program', 'C'),
+('What is the primary function of the operating system?', 'Manage hardware and software resources', 'Manage user data', 'Manage web browsing', 'Manage games', 'A'),
+('Which programming language is primarily used for Android development?', 'Java', 'Python', 'C#', 'Ruby', 'A'),
+('Which database system is widely used in web applications?', 'PostgreSQL', 'SQLite', 'MySQL', 'Oracle', 'C'),
+('What is the process of encoding information so that it is unreadable to unauthorized people called?', 'Compression', 'Decryption', 'Encryption', 'Encoding', 'C'),
+('Which of the following is a cloud storage service?', 'Google Drive', 'Microsoft Excel', 'Adobe Photoshop', 'Windows 10', 'A'),
+('Which of the following is the most popular search engine?', 'DuckDuckGo', 'Yahoo', 'Bing', 'Google', 'D'),
+('What does HTTP stand for?', 'Hypertext Transfer Protocol', 'Hyper Tool Transfer Protocol', 'Hypertext Text Protocol', 'Hyper Transfer Tool Protocol', 'A'),
+('Which company developed the Windows operating system?', 'Oracle', 'Microsoft', 'Apple', 'Linux', 'B'),
+('What is the main purpose of RAM in a computer?', 'Store data temporarily', 'Process instructions', 'Store data permanently', 'Display data', 'A'),
+('What is the function of a firewall?', 'Increase internet speed', 'Store data', 'Block unauthorized access', 'Encrypt passwords', 'C');
